@@ -46,6 +46,31 @@ class CustomFieldSetTest extends TestCase
         self::assertSame(2, $data['customFields'][1]['config']['customFieldPosition']);
     }
 
+    public function testCustomFieldFlagsHaveDefaultsAndCanBeOverridden(): void
+    {
+        $default = new CustomField('field_a', CustomFieldTypes::TEXT, 'Field A')->toArray();
+
+        self::assertTrue($default['allowCustomerWrite']);
+        self::assertFalse($default['allowCartExpose']);
+        self::assertTrue($default['storeApiAware']);
+        self::assertFalse($default['includeInSearch']);
+
+        $custom = new CustomField(
+            'field_b',
+            CustomFieldTypes::TEXT,
+            'Field B',
+            allowCustomerWrite: false,
+            allowCartExpose: true,
+            storeApiAware: false,
+            includeInSearch: true,
+        )->toArray();
+
+        self::assertFalse($custom['allowCustomerWrite']);
+        self::assertTrue($custom['allowCartExpose']);
+        self::assertFalse($custom['storeApiAware']);
+        self::assertTrue($custom['includeInSearch']);
+    }
+
     public function testCustomFieldRejectsIncompleteLabel(): void
     {
         $this->expectException(\InvalidArgumentException::class);

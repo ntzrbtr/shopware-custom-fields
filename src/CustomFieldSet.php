@@ -30,7 +30,7 @@ readonly class CustomFieldSet
     }
 
     /**
-     * @return array{id: string, name: string, config: array<string, mixed>, customFields: array<array{id: string, name: string, type: string, allowCustomerWrite: bool, config: array<mixed>}>}
+     * @return array{id: string, name: string, config: array<string, mixed>, customFields: array<array{id: string, name: string, type: string, allowCustomerWrite: bool, allowCartExpose: bool, storeApiAware: bool, includeInSearch: bool, config: array<mixed>}>}
      */
     public function toArray(): array
     {

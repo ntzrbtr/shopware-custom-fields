@@ -69,6 +69,25 @@ class OrderDataSetProvider implements CustomFieldSetProviderInterface
 The `config` of a field is merged recursively into the defaults (`componentName: sw-field`,
 `customFieldType: text`, the label), so you can override or add any custom field config Shopware supports.
 
+Further options of a field:
+
+| Option | Default | Meaning |
+|---|---|---|
+| `allowCustomerWrite` | `true` | Customers may write the field (e.g. via Store API) |
+| `allowCartExpose` | `false` | Field is available in the cart (e.g. on line items) |
+| `storeApiAware` | `true` | Field is included in Store API responses |
+| `includeInSearch` | `false` | Field can be used in the product search configuration |
+
+```php
+new CustomField(
+    name: 'product_internal_note',
+    type: CustomFieldTypes::TEXT,
+    label: 'Internal note',
+    allowCustomerWrite: false,
+    storeApiAware: false,
+);
+```
+
 ### Register the services
 
 The installer is not registered automatically; add it to your plugin's `services.yaml`:

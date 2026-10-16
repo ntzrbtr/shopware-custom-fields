@@ -23,7 +23,11 @@ readonly class CustomField
         public string $name,
         public string $type,
         public array|string $label,
-        public array $config = []
+        public array $config = [],
+        public bool $allowCustomerWrite = true,
+        public bool $allowCartExpose = false,
+        public bool $storeApiAware = true,
+        public bool $includeInSearch = false
     ) {
         $this->id = Uuid::randomHex();
 
@@ -38,7 +42,7 @@ readonly class CustomField
     }
 
     /**
-     * @return array{id: string, name: string, type: string, allowCustomerWrite: bool, config: array<mixed>}
+     * @return array{id: string, name: string, type: string, allowCustomerWrite: bool, allowCartExpose: bool, storeApiAware: bool, includeInSearch: bool, config: array<mixed>}
      */
     public function toArray(): array
     {
@@ -46,7 +50,10 @@ readonly class CustomField
             'id' => $this->id,
             'name' => $this->name,
             'type' => $this->type,
-            'allowCustomerWrite' => true,
+            'allowCustomerWrite' => $this->allowCustomerWrite,
+            'allowCartExpose' => $this->allowCartExpose,
+            'storeApiAware' => $this->storeApiAware,
+            'includeInSearch' => $this->includeInSearch,
             'config' => array_replace_recursive(
                 [
                     'componentName' => 'sw-field',

@@ -7,6 +7,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- `CustomField` options `allowCustomerWrite` (default `true`), `allowCartExpose` (default `false`),
+  `storeApiAware` (default `true`) and `includeInSearch` (default `false`)
+
 ## [1.0.0]
 
 ### Added
