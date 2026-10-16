@@ -1,0 +1,45 @@
+{
+    "name": "ntzrbtr/shopware-custom-fields",
+    "description": "Define custom field sets for Shopware 6 in PHP and install, update and uninstall them from plugins",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "shopware",
+        "shopware6",
+        "custom fields"
+    ],
+    "authors": [
+        {
+            "name": "Thomas Off",
+            "email": "thomas.off@netzarbeiter.info"
+        }
+    ],
+    "require": {
+        "php": "^8.4",
+        "shopware/core": "^6.7"
+    },
+    "require-dev": {
+        "phpstan/extension-installer": "^1.4",
+        "phpstan/phpstan": "^2.1",
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpunit/phpunit": "^12.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Netzarbeiter\\Shopware\\CustomFields\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Netzarbeiter\\Shopware\\CustomFields\\Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": true,
+            "symfony/runtime": true,
+            "phpstan/extension-installer": true
+        },
+        "sort-packages": true
+    }
+}

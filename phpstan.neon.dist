@@ -1,0 +1,7 @@
+parameters:
+	level: 8
+	paths:
+		- src
+		- tests
+	# Ignores for deprecations only apply to some of the supported Shopware versions
+	reportUnmatchedIgnoredErrors: false
