@@ -98,14 +98,19 @@ services:
         autowire: true
         autoconfigure: true
 
+    _instanceof:
+        Netzarbeiter\Shopware\CustomFields\Provider\CustomFieldSetProviderInterface:
+            tags: ['netzarbeiter.shopware.custom_fields.provider']
+
     Netzarbeiter\Shopware\CustomFields\CustomFieldSetInstaller: ~
 
     Vendor\MyPlugin\CustomField\Provider\:
         resource: '../../CustomField/Provider'
 ```
 
-With autoconfiguration enabled, every class implementing `CustomFieldSetProviderInterface` is tagged with
-`netzarbeiter.shopware.custom_fields.provider` and injected into the installer.
+All services tagged with `netzarbeiter.shopware.custom_fields.provider` are injected into the installer. You have
+to assign the tag yourself as shown above. Keep the `_instanceof` entry in the same file as your providers, as it
+only applies to services defined in that file.
 
 ### Install from the plugin lifecycle
 
